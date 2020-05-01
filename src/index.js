@@ -4,10 +4,22 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { StateProvider, defaultReducer } from './state';
+import routes from './constants/routes';
+import constants from './constants/constants';
+
+const initialState = {
+  route: routes.HOME,
+  heading: '',
+  mobile: false
+}
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <StateProvider initialState={initialState} reducer={defaultReducer}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+  </StateProvider>,
   document.getElementById('root')
 );
 
